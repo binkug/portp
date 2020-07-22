@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- 스프링 MVC Project의 어노테이션을 사용할 수 있도록 해주는 설정 -->
+	<annotation-driven />
+	<!-- 캐싱하는 자원의 경로를 설정 -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Controller 에서 jsp로 포워딩하고자 할 때 사용하는 뷰 리졸버 -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value = "1" />
+	</beans:bean>
+	<!-- jsp를 제외한 출력을 위한 설정 -->
+	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="0" />
+	</beans:bean>
+	
+	<!-- 객체를 자동 생성하는 패키지 경로를 설정  -->
+	<context:component-scan base-package="naver.binkug.portfolio" />
+	
+	<!-- Controller가 처리하지 못하는 요청을 WAS 가 처리하도록 해주는 설정 -->
+	<default-servlet-handler/>
+	
+	<!-- 파일업로드를 위한 설정 -->
+	<beans:bean id="multipartResolver"
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" 
+		value="10000000"/>
+	</beans:bean>
+	
+	
+	
+</beans:beans>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+	<!-- user 테이블의 email 중복 체클르 위한 sql 나중에 변경 -->
+	<!-- where을 적지 않는 이유는 암호화를 해서 직접 비교가 불가능해져서 -->
+	<select id="emailcheck" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select user_email
+		from member
+	</select>
+
+	<!-- 회원가입을 처리하는 sql -->
+	<!-- insert update delete는 파라미터타입까지 밖에 없다 -->
+	<insert id="register"
+		parameterType="naver.binkug.portfolio.domain.User">
+		insert into member(user_email,user_password,user_gender,user_name)
+		values(#{user_email},#{user_password},#{user_gender},#{user_name})
+	</insert>
+
+	<select id="list" parameterType="Map"
+		resultType="naver.binkug.portfolio.domain.User">
+		select user_email,user_password,user_gender,user_name,user_birthday
+		from (select rownum
+		rnum,user_email,user_password,user_gender,user_name,user_birthday
+		from(select * from member order by user_email by user_email desc))
+		where rnum &gt;= #{start} and rnum &lt;= #{end}
+	</select>
+
+	<!-- 상세 보기를 위한 메소드 -->
+	<select id="detail" parameterType="String"
+		resultType="naver.binkug.portfolio.domain.User">
+		select user_email,user_password,user_gender,user_name,user_birthday
+		from member
+		where user_email = ${user_email}
+	</select>
+</mapper>
