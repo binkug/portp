@@ -17,11 +17,12 @@ public class UserDAO {
 	
 	//데이터 번호를 받아서 번호에 해당하는 데이터를 가져오는 메소드
 	public List<User> list(Map map){
-		return sqlSession.selectList("member.list");
+		System.out.println("dao"+ map);
+		return sqlSession.selectList("member.list", map);
 		
 	}
 	public User detail(String user_email) {
-		return sqlSession.selectOne("membe.detail",user_email);
+		return sqlSession.selectOne("member.detail",user_email);
 	}
 	
 	//이메일 중복체크 메소드
@@ -32,6 +33,11 @@ public class UserDAO {
 	//회원가입 처리 메소드
 	public int register(User user) {
 		return sqlSession.insert("member.register",user);
+	}
+	
+	//로그인 처리 메소드 
+	public List<User> login(){
+		return sqlSession.selectList("member.login");
 	}
 	
 }

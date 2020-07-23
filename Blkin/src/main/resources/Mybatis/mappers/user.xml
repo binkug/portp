@@ -16,24 +16,29 @@
 	<!-- insert update delete는 파라미터타입까지 밖에 없다 -->
 	<insert id="register"
 		parameterType="naver.binkug.portfolio.domain.User">
-		insert into member(user_email,user_password,user_gender,user_name)
+		insert into
+		member(user_email,user_password,user_gender,user_name)
 		values(#{user_email},#{user_password},#{user_gender},#{user_name})
 	</insert>
 
-	<select id="list" parameterType="Map"
+	<select id="list" parameterType="java.util.Map"
 		resultType="naver.binkug.portfolio.domain.User">
-		select user_email,user_password,user_gender,user_name,user_birthday
-		from (select rownum
-		rnum,user_email,user_password,user_gender,user_name,user_birthday
-		from(select * from member order by user_email by user_email desc))
+		SELECT user_email,user_password,user_gender,user_name FROM (select rownum
+		rnum,user_email,user_password,user_gender,user_name
+		from(SELECT * FROM MEMBER ORDER BY user_email desc))
 		where rnum &gt;= #{start} and rnum &lt;= #{end}
 	</select>
 
 	<!-- 상세 보기를 위한 메소드 -->
-	<select id="detail" parameterType="String"
+	<select id="detail" parameterType="java.lang.String"
 		resultType="naver.binkug.portfolio.domain.User">
-		select user_email,user_password,user_gender,user_name,user_birthday
+		select user_email,user_password,user_gender,user_name
 		from member
-		where user_email = ${user_email}
+		where user_email = #{user_email}
+	</select>
+	
+	<select id="login" resultType="naver.binkug.portfolio.domain.User" >
+		select *
+		from member
 	</select>
 </mapper>

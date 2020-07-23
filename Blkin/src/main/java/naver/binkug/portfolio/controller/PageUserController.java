@@ -2,6 +2,7 @@ package naver.binkug.portfolio.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,18 @@ public class PageUserController {
 		//서비스의 메소드를 호출
 		System.out.println("컨트롤러 ");
 		return "user/register";
+	}
+	
+	@RequestMapping(value = "user/login", method = RequestMethod.GET)
+	public String login() {
+		//서비스의 메소드를 호출
+		System.out.println("컨트롤러 ");
+		return "user/login";
 	}	
+	@RequestMapping(value="user/logout", method=RequestMethod.GET)
+	public String logout(HttpSession session) {
+	session.invalidate();
+	return "redirect:../";
+	}
 
 }

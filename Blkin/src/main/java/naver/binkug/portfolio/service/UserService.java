@@ -19,7 +19,10 @@ public interface UserService {
 	
 	//회원가입을 처리해주는 메소드
 	public Map<String,Object> insert(MultipartHttpServletRequest request,HttpServletResponse response);
-	
+	//회원 전체 보기 
 	public void list(HttpServletRequest request,HttpServletResponse response);
+	//회원 상세보기
 	public void detail(HttpServletRequest request,HttpServletResponse response);
+
+	public Map<String, Object> login(HttpServletRequest request, HttpServletResponse response);
 }

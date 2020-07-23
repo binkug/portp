@@ -63,15 +63,15 @@ pageEncoding="UTF-8"%>
 					</div>
 					<div class="col-5 col-12-medium">
 						<ul>
-						<c:if test="${result == null}">
+						<c:if test="${userinfo.user_email == null}">
 							<li><a href="user/register"
 								class="button large icon solid fa-arrow-circle-right">회원가입</a></li>
-							<li><a href="${pageContext.request.contextPath}/user/login"
+							<li><a href="user/login"
 								class="button alt large icon solid fa-arrow-circle-right">로그인</a></li>
 						</c:if>
-						<c:if test="${result != null}">
-							<li><a href="${pageContext.request.contextPath}/user/myinfo" class="button large icon solid fa-arrow-circle-right">님 어서오세요</a></li>
-							<li><a href="${pageContext.request.contextPath}/user/logout" class="button alt large icon solid fa-arrow-circle-right">로그아웃</a></li>
+						<c:if test="${userinfo.user_email != null}">
+							<li><a href="${pageContext.request.contextPath}/user/myinfo" class="button large icon solid fa-arrow-circle-right">${userinfo.user_name }님 어서오세요</a></li>
+							<li><a href="user/logout" class="button alt large icon solid fa-arrow-circle-right">로그아웃</a></li>
 						</c:if>
 						</ul>
 					</div>
