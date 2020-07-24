@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="naver.binkug.portfolio.domain">
+	<class name="Activity" table="Activity">
+		<id name ="activity_num" column="activity_num"></id>
+		<property name="user_email" column="user_email"></property>
+		<property name="activity_subject" column="activity_subject"></property>
+		<property name="activity_type" column="activity_type"></property>
+		<property name="activity_start_date_local" column="activity_start_date_local"></property>
+		<property name="activity_elapsed_time" column="activity_elapsed_time"></property>
+		<property name="activity_content" column="activity_content"></property>
+		<property name="activity_distance" column="activity_distance"></property>
+		<property name="activity_intensity" column="activity_intensity"></property>
+		<property name="activity_image" column="activity_image"></property>
+		<property name="activity_elev_gain" column="activity_elev_gain"></property>
+		
+	</class>
+</hibernate-mapping>
