@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="naver.binkug.portfolio.domain">
+	<class name="User" table ="member">
+		<id name = "user_email" column="user_email"></id>
+		<property name="user_password" column="user_password"></property>
+		<property name="user_gender" column="user_gender"></property>
+		<property name="user_name" column="user_name"></property>
+		<property name="user_kg" column="user_kg"></property>
+		<property name="user_birthday" column="user_birthday"></property>
+		<property name="user_image" column="user_image"></property>
+		<property name="islogin" column="islogin"></property>
+		<property name="isremove" column="isremove"></property>
+		<property name="logindate" column="logindate"></property>
+		<property name="regdate" column="regdate"></property>
+		<property name="isemail" column="isemail"></property>
+	</class>
+</hibernate-mapping>

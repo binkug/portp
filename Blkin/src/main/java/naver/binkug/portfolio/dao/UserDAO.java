@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +14,7 @@ import naver.binkug.portfolio.domain.User;
 public class UserDAO {
 	@Autowired
 	private SqlSession sqlSession;
+
 	
 	
 	//데이터 번호를 받아서 번호에 해당하는 데이터를 가져오는 메소드

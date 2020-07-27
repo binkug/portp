@@ -41,6 +41,7 @@
 		<property name="mappingResources">
 			<list>
 				<value>naver/binkug/portfolio/dao/activity.hbm.xml</value>
+				<value>naver/binkug/portfolio/dao/user.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

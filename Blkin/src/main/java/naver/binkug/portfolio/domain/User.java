@@ -14,10 +14,8 @@ public class User {
 	private Integer islogin;
 	private Integer isremove;
 	private Date logindate;
-	private Date joindate;
+	private Date regdate;
 	private Integer isemail;
-	
-	
 	public String getUser_email() {
 		return user_email;
 	}
@@ -78,11 +76,11 @@ public class User {
 	public void setLogindate(Date logindate) {
 		this.logindate = logindate;
 	}
-	public Date getJoindate() {
-		return joindate;
+	public Date getRegdate() {
+		return regdate;
 	}
-	public void setJoindate(Date joindate) {
-		this.joindate = joindate;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 	public Integer getIsemail() {
 		return isemail;
@@ -90,14 +88,16 @@ public class User {
 	public void setIsemail(Integer isemail) {
 		this.isemail = isemail;
 	}
-	
 	@Override
 	public String toString() {
 		return "User [user_email=" + user_email + ", user_password=" + user_password + ", user_gender=" + user_gender
 				+ ", user_name=" + user_name + ", user_kg=" + user_kg + ", user_birthday=" + user_birthday
 				+ ", user_image=" + user_image + ", islogin=" + islogin + ", isremove=" + isremove + ", logindate="
-				+ logindate + ", joindate=" + joindate + ", isemail=" + isemail + "]";
+				+ logindate + ", regdate=" + regdate + ", isemail=" + isemail + "]";
 	}
+	
+	
+
 	
 
 }

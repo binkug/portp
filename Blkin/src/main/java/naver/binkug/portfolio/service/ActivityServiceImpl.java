@@ -84,6 +84,7 @@ public class ActivityServiceImpl implements ActivityService {
 		String user_email = request.getParameter("user_email");
 		String activity_subject = request.getParameter("activity_subject");
 		String activity_type = request.getParameter("activity_type");
+		String activity_content = request.getParameter("activity_content");
 
 		
 		//파일의 기본 값을 설정
@@ -93,7 +94,7 @@ public class ActivityServiceImpl implements ActivityService {
 		//전송 된 파일이 존재하면
 		if(image != null && image.isEmpty() == false) {
 			//파일을 저장할 데릭토리 경로 가져오기
-			String filePath = request.getRealPath("img");
+			String filePath = request.getRealPath("/img");
 			//새로운 파일명 만들기
 			activity_image = UUID.randomUUID() + image.getOriginalFilename();
 			//실제 경로 만들기 
@@ -111,6 +112,7 @@ public class ActivityServiceImpl implements ActivityService {
 			Activity activity = new Activity();
 			activity.setActivity_num(activity_num);
 			activity.setActivity_subject(activity_subject);
+			activity.setActivity_content(activity_content);
 			activity.setActivity_image(activity_image);
 			activity.setActivity_type(activity_type);
 			activity.setUser_email(user_email);
