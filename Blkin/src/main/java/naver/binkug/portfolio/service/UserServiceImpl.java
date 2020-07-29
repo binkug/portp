@@ -155,7 +155,7 @@ public class UserServiceImpl implements UserService {
 				System.out.println(imsi);
 
 				if (CryptoUtil.decryptAES256(imsi, "binkug").equals(userEmail)) {
-					emailResult = userEmail;
+					userEmail = imsi;
 					System.out.println("1" + emailResult);
 					break;
 
@@ -165,7 +165,7 @@ public class UserServiceImpl implements UserService {
 			System.out.println(e.getMessage());
 		}
 		System.out.println(emailResult);
-		User user = userDao.detail(emailResult);
+		User user = userDao.detail(userEmail);
 
 		request.setAttribute("user", emailResult);
 

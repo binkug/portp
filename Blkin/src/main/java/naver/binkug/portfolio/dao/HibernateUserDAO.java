@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import naver.binkug.portfolio.domain.User;
 
 @Repository
-public class UserHibernateDAO {
+public class HibernateUserDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -27,8 +27,8 @@ public class UserHibernateDAO {
 	//로그인을 위한 메소드
 	//eamil과 password를 가지고 로그인
 	public List<User> login(String user_email){
-		List<User> list = sessionFactory.getCurrentSession().createNativeQuery("select user_email,user_password,user_image,user_name from memeber "
-				+ " where user_email = \'"+user_email+"\'").getResultList();
+		List<User> list = sessionFactory.getCurrentSession().createNativeQuery("select * from member "
+				+ " where user_email = \'"+user_email+"\'",User.class).getResultList();
 		
 		return list;
 	}
