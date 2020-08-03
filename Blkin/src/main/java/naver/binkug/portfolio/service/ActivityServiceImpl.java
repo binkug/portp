@@ -55,6 +55,7 @@ public class ActivityServiceImpl implements ActivityService {
 		//dao 메소드를 호출해서 결과 저장 
 		List<User> list = activityDao.list(map);
 		request.setAttribute("list", list);
+		System.out.println(list);
 		int count = activityDao.count(map).intValue();
 		request.setAttribute("count", count);
 		

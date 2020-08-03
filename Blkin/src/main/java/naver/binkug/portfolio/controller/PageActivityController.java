@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class PageBoardController {
+public class PageActivityController {
 	@RequestMapping(value = "dashboard", method = RequestMethod.GET)
 	public String dashboard() {
 		//서비스의 메소드를 호출

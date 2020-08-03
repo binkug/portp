@@ -53,7 +53,7 @@ public class ActivityDAO {
 		//activity_subject에서 검색 , user_email 검색
 		//둘 다 검색
 		if(searchtype == null) {
-			list = sessionFactory.getCurrentSession().createNativeQuery("select * from activity limit " 
+			list = sessionFactory.getCurrentSession().createNativeQuery("select * from member m ,activity a where m.user_email = a.user_email limit " 
 					+ start + "," + size ).getResultList();
 
 		}else if(searchtype.equals("activity_subject")) {
