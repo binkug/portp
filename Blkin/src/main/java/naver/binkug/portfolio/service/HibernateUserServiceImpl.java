@@ -181,7 +181,7 @@ public class HibernateUserServiceImpl implements HibernateUserService {
 				map.put("user_name", user.getUser_name());
 				map.put("user_image", user.getUser_image());
 				try {
-					map.put("email",CryptoUtil.decryptAES256(user.getUser_email(),"binkug"));
+					map.put("user_email",CryptoUtil.decryptAES256(user.getUser_email(),"binkug"));
 				}catch(Exception e) {}
 				map.put("result", true);
 				request.getSession().setAttribute("result", map);
@@ -190,6 +190,7 @@ public class HibernateUserServiceImpl implements HibernateUserService {
 		}
 
 	}
+
 
 	@Override
 	@Transactional

@@ -24,9 +24,11 @@ window.addEventListener("load", function(event) {
 		var request = new XMLHttpRequest();
 		request.open("post", url, true);
 		var formdata = new FormData(loginform);
+		alert(formdata);
 		request.send(formdata);
 		request.addEventListener('load', function(e) {
 			var map = JSON.parse(e.target.responseText);
+			alert(map);
 			if (map.result == true) {
 				location.href = "../";
 			} else {

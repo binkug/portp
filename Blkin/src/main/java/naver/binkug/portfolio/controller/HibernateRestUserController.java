@@ -38,8 +38,8 @@ public class HibernateRestUserController {
 		//서비스의 메소드를 호출
 		hibernateUserService.login(request);
 		Map<String, Object> map = (Map<String, Object>)request.getSession().getAttribute("result");
+		System.out.println("controller : "+map);
 		//결과 리턴
-		
 		return map;
 	}
 	

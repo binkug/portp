@@ -54,7 +54,9 @@ public class ActivityDAO {
 		//둘 다 검색
 		if(searchtype == null) {
 			//오류를 없애기 위해서 각각의 필요한 컬럼들을 써줘야 한다. 
-			list = sessionFactory.getCurrentSession().createNativeQuery("select * from member m ,activity a where m.user_email = a.user_email limit " 
+			list = sessionFactory.getCurrentSession().createNativeQuery("select m.user_email,m.user_name,m.user_image,a.activity_subject,a.activity_type,a.activity_num,"
+					+ "a.activity_start_date_local,a.activity_elapsed_time,a.activity_content,a.activity_distance,a.activity_intensity,a.activity_image,a.activity_elev_gain"
+					+ " from member m ,activity a where m.user_email = a.user_email limit " 
 					+ start + "," + size ).getResultList();
 
 		}else if(searchtype.equals("activity_subject")) {

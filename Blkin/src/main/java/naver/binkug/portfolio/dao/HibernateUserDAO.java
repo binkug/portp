@@ -20,6 +20,11 @@ public class HibernateUserDAO {
 		return list;
 	}
 	
+	public List<User>loginCheck(){
+		List<User> list = (List<User>) sessionFactory.getCurrentSession().createNativeQuery("select user_email,user_password from member").getResultList();
+		return list;
+	}
+	
 	//회원가입을 위한 메소드
 	public void register(User user) {
 		sessionFactory.getCurrentSession().save(user);
