@@ -87,15 +87,28 @@ pageEncoding="UTF-8"%>
 
 						<!-- Box -->
 						<section class="box feature">
-							<a href="#" class="image featured"><img
-								src="images/pic01.jpg" alt="" /></a>
 							<div class="inner">
-								<header>
-									<h2>Put something here</h2>
-									<p>Maybe here as well I think</p>
-								</header>
-								<p>Phasellus quam turpis, feugiat sit amet in, hendrerit in
-									lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
+									<div id="weather_info">
+										<!-- 도시이름 출력 영역 -->
+										<h1 class="city"></h1>
+										<section>
+											<!-- 날씨와 아이콘 출력 영역 -->
+											<p class="w_id"></p>
+											<figure class="icon"></figure>
+											
+											<!-- 온도 출력 영역 -->
+											<aside>
+												<p class="temp">temp</p>
+												<p class="temp_max">max</p>
+												<p class="temp_min">min</p>
+											</aside>
+										</section>
+										
+										<!-- 로딩 이미지 출력 -->
+										<img class="load_img" 
+										src="images/loading.gif"
+										width="50px" />
+									</div>	
 							</div>
 						</section>
 
@@ -297,6 +310,7 @@ pageEncoding="UTF-8"%>
 	<script src="${pageContext.request.contextPath}/resources/assets/js/breakpoints.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/assets/js/util.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/assets/js/weather.js"></script>
 
 </body>
 </html>
