@@ -65,13 +65,13 @@ pageEncoding="UTF-8"%>
 						<ul>
 						<c:if test="${result.user_email == null}">
 							<li><a href="user/register"
-								class="button large icon solid fa-arrow-circle-right">회원가입</a></li>
+								class="button large solid fa-arrow-circle-right">회원가입</a></li>
 							<li><a href="user/login"
-								class="button alt large icon solid fa-arrow-circle-right">로그인</a></li>
+								class="button alt large solid fa-arrow-circle-right">로그인</a></li>
 						</c:if>
 						<c:if test="${result.user_email != null}">
-							<li><a href="${pageContext.request.contextPath}/user/myinfo" class="button large icon solid fa-arrow-circle-right">${userinfo.user_name }님 어서오세요</a></li>
-							<li><a href="user/logout" class="button alt large icon solid fa-arrow-circle-right">로그아웃</a></li>
+							<li><a href="user/update" class="button large solid fa-arrow-circle-right">${result.user_name }님 어서오세요</a></li>
+							<li><a href="user/logout" class="button alt large solid fa-arrow-circle-right">로그아웃</a></li>
 						</c:if>
 						</ul>
 					</div>

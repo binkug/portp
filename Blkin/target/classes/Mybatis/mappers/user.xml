@@ -4,6 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="member">
+	<!-- 데이터 개수 와 데이터 목록 보기를 위한 동적 SQL -->
+	<sql id="search">
+		<!--searchtype이 null 이거나 글자가 없다면 where 절 없음 -->
+		<if test="searchtype==null"></if>
+		<if test="searchtype==''.toString()"></if>
+		<if test="searchtype=='itemname'.toString()">
+			where lower(user_name) like '%' || #{keyword} 
+			|| '%'
+		</if>
+		<if test="searchtype=='description'.toString()">
+			where lower(description) like '%' || #{keyword} 
+			|| '%'
+		</if>
+		<if test="searchtype=='both'.toString()">
+			where lower(itemname) like '%' || #{keyword} 
+			|| '%' or lower(description) like '%' || 
+			 #{keyword} || '%'
+		</if>
+	</sql>
+
 	<!-- user 테이블의 email 중복 체클르 위한 sql 나중에 변경 -->
 	<!-- where을 적지 않는 이유는 암호화를 해서 직접 비교가 불가능해져서 -->
 	<select id="emailcheck" parameterType="java.lang.String"

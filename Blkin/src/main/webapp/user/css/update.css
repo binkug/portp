@@ -1,0 +1,15 @@
+ul {
+}
+ul li {
+}form {
+width: 50em;
+border: 1px solid #666; border-radius: 10px;
+box-shadow: .2em .2em .5em #999; background-color: #d0e9f6; padding: 1em;
+overflow: hidden;
+}
+label {
+}
+display: block; float: left;
+width: 10em; text-align: right; margin-right: .5em; color: #04699d;
+list-style-type: none;
+clear: both;

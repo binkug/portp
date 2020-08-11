@@ -200,12 +200,30 @@ public class HibernateUserServiceImpl implements HibernateUserService {
 		String user_email = request.getParameter("user_email");
 		String user_password = request.getParameter("user_password");
 		String user_name = request.getParameter("user_name");
+		String user_kg = request.getParameter("user_kg");
+		String user_gender = request.getParameter("user_gender");
 		// 이미지는 반드시 입력되는 항목이 아니라면
 		// 이전값을 파라미터로 보내고 새로운 값이 null이 아니라면
 		// 새로운 값으로 대체
 		String profile = request.getParameter("oldprofile");
-		// email 찾아오기
+		List<String> emailList = hibernateUserDAO.emailcheck();
+		try {
+			for (String imsi : emailList) {
+				System.out.println(imsi);
+
+				if (CryptoUtil.decryptAES256(imsi, "binkug").equals(user_email)) {
+					user_email = imsi;
+
+					break;
+
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
 		List<User> list = hibernateUserDAO.login(user_email);
+		// email 찾아오기
 		String email = list.get(0).getUser_email();
 
 		// 이미지 파일 업로드
@@ -231,9 +249,11 @@ public class HibernateUserServiceImpl implements HibernateUserService {
 		// DAO 파라미터 만들기
 		User user = new User();
 		user.setUser_email(user_email);
-		user.setUser_password(user_password);
+		user.setUser_password(BCrypt.hashpw(user_password, BCrypt.gensalt()));
 		user.setUser_name(user_name);
 		user.setUser_image(profile);
+		user.setUser_kg(Double.parseDouble(user_kg));
+		user.setUser_gender(user_gender);
 
 		hibernateUserDAO.update(user);
 

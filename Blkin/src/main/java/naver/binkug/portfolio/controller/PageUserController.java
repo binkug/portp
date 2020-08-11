@@ -27,8 +27,14 @@ public class PageUserController {
 	}	
 	@RequestMapping(value="user/logout", method=RequestMethod.GET)
 	public String logout(HttpSession session) {
-	session.invalidate();
-	return "redirect:../";
+		session.invalidate();
+		return "redirect:../";
+	}
+	
+	@RequestMapping(value="user/update", method=RequestMethod.GET)
+	public String update() {
+		System.out.println("유저 업데이트 컨트롤러");
+		return "user/update";
 	}
 
 }

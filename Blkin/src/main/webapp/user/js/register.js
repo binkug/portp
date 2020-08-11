@@ -89,7 +89,7 @@ window.addEventListener("load", function(event){
 		
 		//ajax 요청에 응답이 오면
 		request.addEventListener("load", function(e){
-			alert(e.target.responseText);
+			//alert(e.target.responseText);
 			
 			//결과를 파싱
 			var obj = JSON.parse(e.target.responseText);

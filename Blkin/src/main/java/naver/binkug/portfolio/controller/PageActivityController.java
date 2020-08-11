@@ -10,7 +10,7 @@ public class PageActivityController {
 	public String dashboard() {
 		//서비스의 메소드를 호출
 		
-		return "user/dashboard";
+		return "activity/dashboard";
 	}
 	
 	@RequestMapping(value = "alluser", method = RequestMethod.GET)

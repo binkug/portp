@@ -66,7 +66,7 @@
 				<header>
 					<div class="title">
 						<h2>
-							<a href="single.html">${list.activity_subject}</a>
+							<a href="">${list.activity_subject}</a>
 						</h2>
 						<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
 					</div>
@@ -77,14 +77,8 @@
 							src="images/avatar.jpg" alt="" /></a>
 					</div>
 				</header>
-				<div align="center" class="body">
-					<h2>파일 목록</h2>
-					<table border="1">
-						<!-- items에 있는 ${list}가 serviceimpl에 있는 것과 같아야 한다.ㄴ  -->
-						<c:forEach var="item" items="${list}">
-							${item.activity_subject}
-						</c:forEach>
-					</table>
+				<div>
+					<div>이름</div>
 				</div>
 				<footer>
 					<ul class="actions">
@@ -190,10 +184,6 @@
 					<li><a href="#" class="icon solid fa-envelope"><span
 							class="label">Email</span></a></li>
 				</ul>
-				<p class="copyright">
-					&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>.
-					Images: <a href="http://unsplash.com">Unsplash</a>.
-				</p>
 			</section>
 
 		</section>
