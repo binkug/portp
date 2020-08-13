@@ -106,7 +106,7 @@ pageEncoding="UTF-8"%>
 										
 										<!-- 로딩 이미지 출력 -->
 										<img class="load_img" 
-										src="images/loading.gif"
+										src="img/loading.gif"
 										width="50px" />
 									</div>	
 							</div>

@@ -52,21 +52,26 @@ public class ActivityDAO {
 		//검색 항목이 없는 경우 
 		//activity_subject에서 검색 , user_email 검색
 		//둘 다 검색
-		if(searchtype == null) {
+		if(searchtype == null || "".equals(searchtype)) {
 			//오류를 없애기 위해서 각각의 필요한 컬럼들을 써줘야 한다. 
-			list = sessionFactory.getCurrentSession().createNativeQuery("select m.user_email,m.user_name,m.user_image,a.activity_subject,a.activity_type,a.activity_num,"
+			list = sessionFactory.getCurrentSession().createNativeQuery("select m.user_email,m.user_name,a.activity_subject,a.activity_type,a.activity_num,"
 					+ "a.activity_start_date_local,a.activity_elapsed_time,a.activity_content,a.activity_distance,a.activity_intensity,a.activity_image,a.activity_elev_gain"
 					+ " from member m ,activity a where m.user_email = a.user_email limit " 
 					+ start + "," + size ).getResultList();
 
-		}else if(searchtype.equals("activity_subject")) {
-			list = sessionFactory.getCurrentSession().createNativeQuery("select * from activity where lower(activity_subject) like \'"+value+"\' limit "
+		}else if("activity_subject".equals(searchtype)) {
+			list = sessionFactory.getCurrentSession().createNativeQuery("select m.user_email,m.user_name,a.activity_subject,a.activity_type,a.activity_num,"
+					+ "a.activity_start_date_local,a.activity_elapsed_time,a.activity_content,a.activity_distance,a.activity_intensity,a.activity_image,a.activity_elev_gain"
+					+	" from activity a join member m on a.user_email = m.user_email where lower(activity_subject) like \'"+value+"\' limit "
 					+ start + ","+size ).getResultList();
-		}else if(searchtype.equals("user_email")) {
-			list = sessionFactory.getCurrentSession().createNativeQuery("select * from activity where lower(user_email) like \'"+value+"\' limit "
+		}else if("user_name".equals(searchtype)) {
+			list = sessionFactory.getCurrentSession().createNativeQuery("select m.user_email,m.user_name,a.activity_subject,a.activity_type,a.activity_num,"
+										+ "a.activity_start_date_local,a.activity_elapsed_time,a.activity_content,a.activity_distance,a.activity_intensity,a.activity_image,a.activity_elev_gain"
+										+	" from activity a join member m on a.user_email = m.user_email where lower(user_name) like \'"+value+"\' limit "
 					+ start + ","+size ).getResultList();
-		}else if(searchtype.equals("both")) {
-			list = sessionFactory.getCurrentSession().createNativeQuery("select * from activity where lower(user_email) like \'"+value+" \'"
+
+		}else if("both".equals(searchtype)) {
+			list = sessionFactory.getCurrentSession().createNativeQuery("select * from activity where lower(user_name) like \'"+value+" \'"
 					+ "or lower(activity_subject) like \'"+value+ " \' limit "+ start + ","+size ).getResultList();
 		}
 		
@@ -92,6 +97,12 @@ public class ActivityDAO {
 		}else if(searchtype.equals("activity_subject")) {
 			list = sessionFactory.getCurrentSession().createNativeQuery("select count(*) from activity " + 
 					"where lower(activity_subject) like \'" + 
+					value + "\'")
+						.getResultList();
+			
+		}else if(searchtype.equals("user_name")) {
+			list = sessionFactory.getCurrentSession().createNativeQuery("select count(*) from activity a join member m on a.user_email = m.user_email " + 
+					"where lower(user_name) like \'" + 
 					value + "\'")
 						.getResultList();
 			
