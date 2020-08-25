@@ -150,7 +150,7 @@ public class HibernateUserServiceImpl implements HibernateUserService {
 		//로그인 성공 여부를 저장 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("result", false);
-		String emailResult = null;
+
 		List<String> emailList = hibernateUserDAO.emailcheck();
 		try {
 			for (String imsi : emailList) {
